@@ -4,7 +4,6 @@ import (
 	"net/http"
 	"slices"
 
-	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
 )
 
@@ -59,7 +58,6 @@ func addFood(c echo.Context) error {
 	if err := c.Bind(&food); err != nil {
 		return err
 	}
-	food.ID = uuid.New().String()
 	foods = append(foods, food)
 	return c.JSON(http.StatusCreated, echo.Map{
 		"data": food,
